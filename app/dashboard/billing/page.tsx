@@ -1,6 +1,6 @@
 "use client"
 import { Button } from '@/components/ui/button';
-import React, { useState, useEffect ,useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axio from 'axios'
 import { Loader2Icon } from 'lucide-react';
 import { UserSubscription } from '@/utils/schema';
@@ -8,7 +8,14 @@ import { db } from '@/utils/db';
 import { useUser } from '@clerk/nextjs';
 import moment from 'moment';
 import { UserSubscriptionContext } from '@/app/(context)/UserSubscriptionContext';
-const PlanCard = ({ title, price, features }) => (
+
+interface PlanCardProps {
+  title: string;
+  price: number;
+  features: string[];
+}
+
+const PlanCard: React.FC<PlanCardProps> = ({ title, price, features }) => (
   <div className="bg-white rounded-lg shadow-md p-6 m-4">
     <h3 className="text-xl font-bold mb-2">{title}</h3>
     <p className="text-2xl font-bold mb-4">${price}/month</p>
@@ -95,7 +102,7 @@ function Billing() {
       }
   }
 
-  const plans = [
+  const plans: PlanCardProps[] = [
     {
       title: "Free Plan",
       price: 0,
@@ -133,7 +140,7 @@ function Billing() {
                   className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition duration-200 mt-4 flex items-center justify-center"
                 >
                   {loading && <Loader2Icon className='animate-spin mr-2' />}
-                  {userSubscription?'Active Plan': 'Get Started'}
+                  {userSubscription ? 'Active Plan' : 'Get Started'}
                 </button>
               )}
             </div>

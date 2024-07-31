@@ -3,9 +3,27 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { FileText, Sliders, DollarSign, HeadphonesIcon } from 'lucide-react';
+import { FileText, Sliders, DollarSign, HeadphonesIcon, LucideIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@clerk/nextjs';
+
+// Define the interface for FeatureCard props
+interface FeatureCardProps {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
+  return (
+    <div className="border border-white/20 rounded-lg p-6 text-center bg-white/10 backdrop-blur-sm">
+      <Icon className="h-12 w-12 mx-auto mb-4" />
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <p className="mb-4">{description}</p>
+      <Button variant="outline" className="border-white text-blue-700">Learn more</Button>
+    </div>
+  );
+}
 
 export default function Home() {
   const router = useRouter();
@@ -63,17 +81,6 @@ export default function Home() {
           />
         </section>
       </div>
-    </div>
-  );
-}
-
-function FeatureCard({ icon: Icon, title, description }) {
-  return (
-    <div className="border border-white/20 rounded-lg p-6 text-center bg-white/10 backdrop-blur-sm">
-      <Icon className="h-12 w-12 mx-auto mb-4" />
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="mb-4">{description}</p>
-      <Button variant="outline" className="border-white  text-blue-700">Learn more</Button>
     </div>
   );
 }
