@@ -6,7 +6,7 @@ This project is a Next.js application that showcases next-generation AI capabili
 
 Check out the [live demo](https://next-gen-ai-29hf.vercel.app/).
 
-![Next Gen AI Screenshot](/Screenshot (93).png)
+![Next Gen AI Screenshot]
 
 ## Features
 
