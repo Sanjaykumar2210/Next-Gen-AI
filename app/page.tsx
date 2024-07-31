@@ -3,9 +3,11 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { FileText, Sliders, DollarSign, HeadphonesIcon, LucideIcon } from 'lucide-react';
+import { FileText, Sliders, DollarSign, HeadphonesIcon, LucideIcon, Code, Github } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@clerk/nextjs';
+import Link from 'next/link';
+
 
 // Define the interface for FeatureCard props
 interface FeatureCardProps {
@@ -43,12 +45,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-800 to-blue-700 text-white">
       <div className="container mx-auto px-4 relative">
         <div className="absolute top-0 left-4">
-          <Image
-            src="/Next_Gen_AI.png"
-            alt="Next Gen AI Logo"
-            width={150}
-            height={150}
-          />
+         
         </div>
         <header className="text-center py-12">
           <h1 className="text-5xl font-bold mb-4">Next Gen AI</h1>
@@ -80,6 +77,15 @@ export default function Home() {
             description="Contact us 24 hours a day, 7 days a week"
           />
         </section>
+        <footer className="text-center py-8">
+          <div className="flex items-center justify-center text-sm text-gray-300">
+            <Code className="mr-2 w-4 h-4" />
+            <span>Developed by Sanjay Kumar</span>
+            <Link href="https://github.com/Sanjaykumar2210" target="_blank" rel="noopener noreferrer">
+              <Github className="ml-2 w-4 h-4 cursor-pointer hover:text-white transition-colors" />
+            </Link>
+          </div>
+        </footer>
       </div>
     </div>
   );

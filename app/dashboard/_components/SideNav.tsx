@@ -38,8 +38,8 @@ function SideNav() {
 
     return (
         <div className='h-screen relative p-5 shadow-sm border bg-white'>
-            <div className='flex justify-center'>
-                <Image src={'/Next_Gen_AI.png'} alt='logo' width={100} height={100} />
+             <div className='flex justify-center mt-[-30px] mb-4'>
+                <Image src={'/Next_Gen_AI.png'} alt='logo' width={200} height={200} />
             </div>
             <hr className='my-2 border' />
             <div className='mt-3'>
