@@ -1,6 +1,5 @@
 // app/dashboard/history/HistoryClient.tsx
 "use client"
-
 import React from 'react'
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -14,7 +13,7 @@ interface HistoryClientProps {
 
 function HistoryClient({ historyList }: HistoryClientProps) {
     const GetTemplateName = (slug: string) => {
-        const template: TEMPLATE | any = Templates?.find((item) => item.slug === slug)
+        const template: TEMPLATE | undefined = Templates?.find((item) => item.slug === slug)
         return template;
     }
 
@@ -34,16 +33,21 @@ function HistoryClient({ historyList }: HistoryClientProps) {
                     <React.Fragment key={index}>
                         <div className='grid grid-cols-7 my-5 py-3 px-3'>
                             <h2 className='col-span-2 flex gap-2 items-center'>
-                                <Image src={GetTemplateName(item?.templateSlug)?.icon} width={25} height={25} alt="Template icon" />
-                                {GetTemplateName(item.templateSlug)?.name}
+                                <Image src={GetTemplateName(item?.templateSlug)?.icon || ''} width={25} height={25} alt="Template icon" />
+                                {GetTemplateName(item.templateSlug)?.name || 'Unknown Template'}
                             </h2>
-                            <h2 className='col-span-2 line-clamp-3'>{item?.aiResponse}</h2>
+                            <h2 className='col-span-2 line-clamp-3'>{item?.aiResponse || 'No response'}</h2>
                             <h2>{item.createdAt}</h2>
-                            <h2>{item?.aiResponse.length}</h2>
+                            <h2>{item?.aiResponse?.length || 0}</h2>
                             <h2>
-                                <Button variant='ghost' className='text-primary'
-                                    onClick={() => navigator.clipboard.writeText(item.aiResponse)}
-                                >Copy</Button>
+                                <Button 
+                                    variant='ghost' 
+                                    className='text-primary'
+                                    onClick={() => item.aiResponse && navigator.clipboard.writeText(item.aiResponse)}
+                                    disabled={!item.aiResponse}
+                                >
+                                    Copy
+                                </Button>
                             </h2>
                         </div>
                         <hr/>

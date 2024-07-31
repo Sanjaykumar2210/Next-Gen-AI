@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { db } from '@/utils/db';
 import { AIOutput, UserSubscription } from '@/utils/schema';
 import { useUser } from '@clerk/nextjs';
-import {eq} from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 import React, { useContext, useEffect, useState } from 'react'
 import { HISTORY } from '../history/page';
 import { TotalUsageContext } from '@/app/(context)/TotalUsageContext';
@@ -31,15 +31,21 @@ function UsageTrack() {
     }, [updateCreditUsage, user]);
 
     const GetData = async () => {
+        const userEmail = user?.primaryEmailAddress?.emailAddress;
+        if (!userEmail) return;
+
         const result: HISTORY[] = await db.select().from(AIOutput)
-            .where(eq(AIOutput.createdBy, user?.primaryEmailAddress?.emailAddress));
+            .where(eq(AIOutput.createdBy, userEmail));
 
         GetTotalUsage(result)
     }
       
     const IsUserSubscribe = async () => {
+        const userEmail = user?.primaryEmailAddress?.emailAddress;
+        if (!userEmail) return;
+
         const result = await db.select().from(UserSubscription)
-            .where(eq(UserSubscription.email, user?.primaryEmailAddress?.emailAddress));
+            .where(eq(UserSubscription.email, userEmail));
 
         if (result && result.length > 0) {
             setuserSubscription(true);
@@ -53,7 +59,7 @@ function UsageTrack() {
     const GetTotalUsage = (result: HISTORY[]) => {
         let total: number = 0;
         result.forEach(element => {
-            total = total + Number(element.aiResponse?.length)
+            total = total + Number(element.aiResponse?.length || 0)
         });
         setTotalUsage(total);
     }
