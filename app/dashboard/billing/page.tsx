@@ -18,7 +18,7 @@ interface PlanCardProps {
 const PlanCard: React.FC<PlanCardProps> = ({ title, price, features }) => (
   <div className="bg-white rounded-lg shadow-md p-6 m-4">
     <h3 className="text-xl font-bold mb-2">{title}</h3>
-    <p className="text-2xl font-bold mb-4">${price}/month</p>
+    <p className="text-2xl font-bold mb-4">₹{price}/month</p>
     <ul className="mb-6">
       {features.map((feature, index) => (
         <li key={index} className="flex items-center mb-2">
@@ -115,7 +115,7 @@ function Billing() {
     },
     {
       title: "Monthly Plan",
-      price: 3.57,
+      price: 299,
       features: [
         "100,000 Words/Month",
         "50+ Template Access",

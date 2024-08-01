@@ -77,9 +77,6 @@ function UsageTrack() {
                 </div>
                 <h2 className='text-sm my-2'>{totalUsage}/{maxWords} credit used</h2>
             </div>
-            <Button variant={'secondary'} className='w-full my-3 text-primary'>
-                {userSubscription ? 'Manage Subscription' : 'Upgrade'}
-            </Button>
         </div>
     )
 }

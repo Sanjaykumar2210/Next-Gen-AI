@@ -1,13 +1,12 @@
 "use client"
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { FileText, Sliders, DollarSign, HeadphonesIcon, LucideIcon, Code, Github } from 'lucide-react';
+import { FileText, Sliders, DollarSign, HeadphonesIcon, LucideIcon, Code, Github, X, Mail, Phone } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@clerk/nextjs';
 import Link from 'next/link';
-
 
 // Define the interface for FeatureCard props
 interface FeatureCardProps {
@@ -22,7 +21,7 @@ function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
       <Icon className="h-12 w-12 mx-auto mb-4" />
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="mb-4">{description}</p>
-      <Button variant="outline" className="border-white text-blue-700">Learn more</Button>
+    
     </div>
   );
 }
@@ -30,6 +29,8 @@ function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
 export default function Home() {
   const router = useRouter();
   const { isSignedIn, isLoaded } = useAuth();
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
+  const [showContactUs, setShowContactUs] = useState(false);
 
   const handleGetStarted = () => {
     if (isLoaded) {
@@ -41,11 +42,18 @@ export default function Home() {
     }
   };
 
+  const togglePrivacyPolicy = () => {
+    setShowPrivacyPolicy(!showPrivacyPolicy);
+  };
+
+  const toggleContactUs = () => {
+    setShowContactUs(!showContactUs);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-800 to-blue-700 text-white">
       <div className="container mx-auto px-4 relative">
         <div className="absolute top-0 left-4">
-         
         </div>
         <header className="text-center py-12">
           <h1 className="text-5xl font-bold mb-4">Next Gen AI</h1>
@@ -78,15 +86,95 @@ export default function Home() {
           />
         </section>
         <footer className="text-center py-8">
-          <div className="flex items-center justify-center text-sm text-gray-300">
-            <Code className="mr-2 w-4 h-4" />
-            <span>Developed by Sanjay Kumar</span>
-            <Link href="https://github.com/Sanjaykumar2210" target="_blank" rel="noopener noreferrer">
-              <Github className="ml-2 w-4 h-4 cursor-pointer hover:text-white transition-colors" />
-            </Link>
+          <div className="flex flex-col items-center justify-center text-sm text-gray-300">
+            <div className="flex items-center">
+              <Code className="mr-2 w-4 h-4" />
+              <span>Developed by Sanjay Kumar</span>
+              <Link href="https://github.com/Sanjaykumar2210" target="_blank" rel="noopener noreferrer">
+                <Github className="ml-2 w-4 h-4 cursor-pointer hover:text-white transition-colors" />
+              </Link>
+            </div>
+            <button 
+              onClick={togglePrivacyPolicy} 
+              className="mt-2 text-xs hover:underline focus:outline-none"
+            >
+              Privacy Policy
+            </button>
+            <button 
+            onClick={toggleContactUs} 
+            className="mt-2 text-xs hover:underline focus:outline-none"
+          >
+            Contact Us
+          </button>
           </div>
         </footer>
       </div>
+
+      {showPrivacyPolicy && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 overflow-y-auto">
+          <div className="bg-white text-black p-8 rounded-lg max-w-2xl relative my-8">
+            <button onClick={togglePrivacyPolicy} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+              <X className="w-6 h-6" />
+            </button>
+            <h2 className="text-2xl font-bold mb-4">Privacy Policy for Next Gen AI</h2>
+            <p className="text-sm text-gray-600 mb-4">Effective Date: 01/08/2024</p>
+            <div className="space-y-4 text-sm">
+              <section>
+                <h3 className="font-semibold">1. Information We Collect</h3>
+                <p>We collect your email address for user identification. Payment information is processed by Razorpay we don't store this data.</p>
+              </section>
+              <section>
+                <h3 className="font-semibold">2. Use of Information</h3>
+                <p>Your email is used to identify users and for communication regarding the AI module.</p>
+                <p> To communicate with you regarding your use of the AI module and to provide customer support.</p>
+              </section>
+              <section>
+                <h3 className="font-semibold">3. Data Protection</h3>
+                <p>We implement security measures to protect your data but can't guarantee absolute security. We don't sell your information.</p>
+              </section>
+              <section>
+                <h3 className="font-semibold">4. Your Rights</h3>
+                <p>You may request access, correction, or deletion of your personal information.</p>
+              </section>
+              <section>
+                <h3 className="font-semibold">5. Updates to Policy</h3>
+                <p>We may update this policy. Significant changes will be notified on our website.</p>
+              </section>
+              <section>
+                <h3 className="font-semibold">6. Contact Us</h3>
+                <p>Next Gen AI <br/>
+                  sk4025603@gmail.com</p>
+              </section>
+              <section>
+                <p>By using our AI module, you consent to this Privacy Policy.</p>
+                <p>Last updated: 01/08/2024</p>
+              </section>
+            </div>
+          </div>
+        </div>
+      )}
+
+{showContactUs && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white text-black p-8 rounded-lg max-w-md relative">
+            <button onClick={toggleContactUs} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+              <X className="w-6 h-6" />
+            </button>
+            <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+            <div className="space-y-4">
+              <h3 className="font-semibold">Next Gen AI</h3>
+              <div className="flex items-center">
+                <Mail className="w-5 h-5 mr-2" />
+                <a href="mailto:sk4025603@gmail.com" className="text-blue-600 hover:underline">sk4025603@gmail.com</a>
+              </div>
+              <div className="flex items-center">
+                <Phone className="w-5 h-5 mr-2" />
+                <a href="tel:+919962143752" className="text-blue-600 hover:underline">+91 9962143752</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
