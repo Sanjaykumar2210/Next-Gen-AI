@@ -108,6 +108,7 @@ function SideNav() {
               <section>
                 <h3 className="font-semibold">6. Contact Us</h3>
                 <p>Next Gen AI <br/>
+                222/246 KVB GARDEN RA PURAM CHENNAI-600028 <br/>
                   sk4025603@gmail.com</p>
               </section>
               <section>
