@@ -65,7 +65,7 @@ function UsageTrack() {
     }
 
     return (
-        <div className='m-5'>
+        <div className='m-3'>
             <div className='bg-primary text-white p-3 rounded-lg'>
                 <h2 className='font-medium'>Credits</h2>
                 <div className='h-2 bg-[#9981f9] w-full rounded-full mt-3'>
