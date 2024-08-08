@@ -68,7 +68,7 @@ function Billing() {
     }
 
     const options = {
-      "key": process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+      "key": process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, 
       "subscription_id": subId,
       "name": 'NextGenAI',
       "description": 'Monthly Subscription',
