@@ -148,7 +148,7 @@ export default function Home() {
               </section>
               <section>
                 <p>By using our AI module, you consent to this Privacy Policy.</p>
-                <p>Last updated: 08/08/2024</p>
+                <p>Last updated: 07/08/2024</p>
               </section>
             </div>
           </div>
