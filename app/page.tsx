@@ -143,12 +143,12 @@ export default function Home() {
               <section>
                 <h3 className="font-semibold">6. Contact Us</h3>
                 <p>Next Gen AI <br/>
-                  222/246 KVB GARDEN RA PURAM CHENNAI-600028 <br/>
-                  sk4025603@gmail.com</p>
+                  
+                nextgenai790@gmail.com</p>
               </section>
               <section>
                 <p>By using our AI module, you consent to this Privacy Policy.</p>
-                <p>Last updated: 07/08/2024</p>
+                <p>Last updated: 09/08/2024</p>
               </section>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function Home() {
               <h3 className="font-semibold">Next Gen AI</h3>
               <div className="flex items-center">
                 <Mail className="w-5 h-5 mr-2" />
-                <a href="mailto:sk4025603@gmail.com" className="text-blue-600 hover:underline">sk4025603@gmail.com</a>
+                <a href="mailto:sk4025603@gmail.com" className="text-blue-600 hover:underline">nextgenai790@gmail.com</a>
               </div>
               <div className="flex items-center">
                 <Phone className="w-5 h-5 mr-2" />

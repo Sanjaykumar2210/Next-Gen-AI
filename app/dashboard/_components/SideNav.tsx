@@ -115,12 +115,11 @@ function SideNav() {
               <section>
                 <h3 className="font-semibold">6. Contact Us</h3>
                 <p>Next Gen AI <br/>
-                222/246 KVB GARDEN RA PURAM CHENNAI-600028 <br/>
-                  sk4025603@gmail.com</p>
+                nextgenai790@gmail.com</p>
               </section>
               <section>
                 <p>By using our AI module, you consent to this Privacy Policy.</p>
-                <p>Last updated: 01/08/2024</p>
+                <p>Last updated: 09/08/2024</p>
               </section>
             </div>
           </div>
@@ -181,7 +180,7 @@ function SideNav() {
                 </section>
                 <section>
                     <p>By using Next Gen AI, you agree to these Terms and Conditions.</p>
-                    <p>Last updated: 01/08/2024</p>
+                    <p>Last updated: 09/08/2024</p>
                 </section>
             </div>
         </div>
